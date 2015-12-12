@@ -125,6 +125,37 @@ namespace HisPatch
             {
                 //wordDoc = GetDocByDrugPutRID(RID);
                 wordDoc = new Document("health.docx");
+                Image bmp = Bitmap.FromFile("head.jpg");
+                string s=wordDoc.Document.Sections[0].Tables[0].Rows[0].Cells[0].Paragraphs[0].Text;
+                Spire.Doc.Collections.DocumentObjectCollection oc= wordDoc.Document.Sections[0].Tables[0].Rows[0].Cells[1].Paragraphs[0].ChildObjects;
+                foreach (var obj in oc)
+                {
+                    Console.WriteLine(obj.GetType().ToString());
+                    if (obj is DocPicture)
+                    {
+                        DocPicture docPic = obj as DocPicture;
+                        docPic.LoadImage(bmp);
+
+                        float sca=(110 / docPic.Height);
+                        docPic.Height = 110;
+                        docPic.Width = docPic.Width *sca ;
+                    }
+                }
+                Table docTable = (Table)wordDoc.Document.Sections[0].Tables[0];
+                docTable.Rows[1].Cells[0].Paragraphs[0].AppendText("2015年10月21日");
+                docTable.Rows[1].Cells[1].Paragraphs[0].AppendText("420300197612210911");
+
+                docTable.Rows[2].Cells[0].Paragraphs[0].Text+="王大海人";
+                docTable.Rows[2].Cells[1].Paragraphs[0].Text+="女";
+                docTable.Rows[2].Cells[2].Paragraphs[0].Text+="41";
+                docTable.Rows[2].Cells[3].Paragraphs[0].Text+="少数民";
+                docTable.Rows[2].Cells[4].Paragraphs[0].Text+="水质处理器（材料）生产";
+
+
+                Spire.Doc.TableCell cell = wordDoc.Document.Sections[0].Tables[0].Rows[0].Cells[1];
+                //docPic.Width = cell.Width;
+                //docPic.Height = docPic.Height * (docPic.Width / cell.Width);
+                
                 //wordDoc.LoadFromFile();
 
                 MemoryStream ms = new MemoryStream();
