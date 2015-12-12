@@ -123,10 +123,9 @@ namespace HisPatch
 
             try
             {
-                wordDoc = GetDocByDrugPutRID(RID);
-                
-
-
+                //wordDoc = GetDocByDrugPutRID(RID);
+                wordDoc = new Document("health.docx");
+                //wordDoc.LoadFromFile();
 
                 MemoryStream ms = new MemoryStream();
                 wordDoc.SaveToStream(ms, FileFormat.Docx);
@@ -152,6 +151,12 @@ namespace HisPatch
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void FormBatchPutDrugReportView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dv.CloseDocument();
+            dv.Dispose();
         }
     }
 }

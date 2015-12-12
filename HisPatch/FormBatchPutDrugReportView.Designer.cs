@@ -73,6 +73,7 @@
             this.Name = "FormBatchPutDrugReportView";
             this.Text = "住院药房发药单打印";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBatchPutDrugReportView_FormClosing);
             this.Load += new System.EventHandler(this.FormBatchPutDrugReportView_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

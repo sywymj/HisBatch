@@ -17,9 +17,12 @@ namespace HisPatch
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormMain());
 
-            DataUtil.IDbHelper dbHelper = new DataUtil.SqlServerHelper("server=192.0.2.3;database=tjdata;uid=tjuser;pwd=tjuser");
-            CTjReport obj = new CTjReport(dbHelper);
-            obj.GetWordDocObjByTjID("00010022","1");
+            //DataUtil.IDbHelper dbHelper = new DataUtil.SqlServerHelper("server=192.0.2.3;database=tjdata;uid=tjuser;pwd=tjuser");
+            //CTjReport obj = new CTjReport(dbHelper);
+            //obj.GetWordDocObjByTjID("00010022","1");
+
+            FormBatchPutDrugReportView dv = new FormBatchPutDrugReportView();
+            dv.ShowDialog();
 
 
             FormLogin formLogin=new FormLogin();
