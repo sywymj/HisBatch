@@ -100,6 +100,12 @@
     <Compile Include="FormBatchPutDrugReportView.Designer.cs">
       <DependentUpon>FormBatchPutDrugReportView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCamera.Designer.cs">
+      <DependentUpon>FormCamera.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDrugPutRecordQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,13 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPersonInforEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPersonInforEdit.Designer.cs">
+      <DependentUpon>FormPersonInforEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GSetting.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BatchProvideDrugForm.resx">
@@ -125,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBatchPutDrugReportView.resx">
       <DependentUpon>FormBatchPutDrugReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCamera.resx">
+      <DependentUpon>FormCamera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDrugPutRecordQuery.resx">
       <DependentUpon>FormDrugPutRecordQuery.cs</DependentUpon>
@@ -134,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPersonInforEdit.resx">
+      <DependentUpon>FormPersonInforEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -202,6 +221,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Love.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Camera_Net\Camera_NET.csproj">
+      <Project>{e6052609-a070-41d5-85b9-acaba91170c5}</Project>
+      <Name>Camera_NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DirectShowLib\DirectShowLib-2010.csproj">
+      <Project>{ce009bfa-5ef6-4153-b2a1-2fa79698a9ae}</Project>
+      <Name>DirectShowLib-2010</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

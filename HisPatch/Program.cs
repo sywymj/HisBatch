@@ -21,8 +21,12 @@ namespace HisPatch
             //CTjReport obj = new CTjReport(dbHelper);
             //obj.GetWordDocObjByTjID("00010022","1");
 
-            FormBatchPutDrugReportView dv = new FormBatchPutDrugReportView();
-            dv.ShowDialog();
+            //FormBatchPutDrugReportView dv = new FormBatchPutDrugReportView();
+            //dv.ShowDialog();
+            //FormCamera formCam = new FormCamera();
+            //formCam.ShowDialog();
+            FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+            formPersonEdit.ShowDialog();
 
 
             FormLogin formLogin=new FormLogin();
