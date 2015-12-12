@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPersonInforEdit));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -37,6 +38,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
@@ -46,7 +48,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 429);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(620, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(745, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -57,7 +59,7 @@
             this.toolStripButtonSelPic});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(620, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(745, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -101,7 +103,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(620, 404);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(745, 404);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // pictureBoxAvatar
@@ -111,11 +113,15 @@
             this.pictureBoxAvatar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxAvatar.Location = new System.Drawing.Point(268, 3);
             this.pictureBoxAvatar.Name = "pictureBoxAvatar";
-            this.pictureBoxAvatar.Size = new System.Drawing.Size(349, 360);
+            this.pictureBoxAvatar.Size = new System.Drawing.Size(474, 360);
             this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxAvatar.TabIndex = 1;
             this.pictureBoxAvatar.TabStop = false;
             this.pictureBoxAvatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxAvatar_Paint);
+            this.pictureBoxAvatar.DoubleClick += new System.EventHandler(this.pictureBoxAvatar_DoubleClick);
+            this.pictureBoxAvatar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseDown);
+            this.pictureBoxAvatar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseMove);
+            this.pictureBoxAvatar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseUp);
             // 
             // openFileDialog1
             // 
@@ -125,13 +131,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 451);
+            this.ClientSize = new System.Drawing.Size(745, 451);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "FormPersonInforEdit";
             this.Text = "FormPersonInforEdit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPersonInforEdit_FormClosing);
+            this.Load += new System.EventHandler(this.FormPersonInforEdit_Load);
+            this.Resize += new System.EventHandler(this.FormPersonInforEdit_Resize);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -151,5 +159,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonCam;
         private System.Windows.Forms.ToolStripButton toolStripButtonSelPic;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
