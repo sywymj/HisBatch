@@ -9,6 +9,7 @@ namespace HisPatch
     {
         public static Image Avatar { get; set; }
         public static int OperatorID { get; set; }
-        public static int OperatorName { get; set; }
+        public static string OperatorName { get; set; }
+        internal static string connStr = "server=.;database=examination;uid=cbsoft;pwd=cbsoft.cbhis";
     }
 }

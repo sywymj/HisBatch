@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Examination" Class="DataClassExamDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Examination;Integrated Security=True" SettingsObjectName="HisPatch.Properties.Settings" SettingsPropertyName="ExaminationConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.PersonReg" Member="PersonReg">
+    <Type Name="PersonReg">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Serial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="PSN" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="PersonName" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Sex" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="Age" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Nation" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkType" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Avatar" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Conclusion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ZjDoctorID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ZjDoctorName" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="RegOperID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="RegOperName" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="IsFail" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="T1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="T2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="T3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PersonReg_QualifiedSign" Member="QualifiedSign" ThisKey="ID" OtherKey="PersonID" Type="QualifiedSign" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QualifiedSign" Member="QualifiedSign">
+    <Type Name="QualifiedSign">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Serail" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="SignDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime" IsDbGenerated="true" CanBeNull="true" />
+      <Column Name="SignOperID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SignOperName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IsFail" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="SignNumber" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="ExpireDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="T1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="T2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="T3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PersonReg_QualifiedSign" Member="PersonReg" ThisKey="PersonID" OtherKey="ID" Type="PersonReg" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

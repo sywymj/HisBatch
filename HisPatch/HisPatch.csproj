@@ -93,7 +93,16 @@
     <Compile Include="BatchProvideDrugForm.Designer.cs">
       <DependentUpon>BatchProvideDrugForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CExamPerson.cs" />
     <Compile Include="CTjReport.cs" />
+    <Compile Include="DataClassExam.cs">
+      <DependentUpon>DataClassExam.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataClassExam.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassExam.dbml</DependentUpon>
+    </Compile>
     <Compile Include="FormBatchPutDrugReportView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +146,9 @@
     <EmbeddedResource Include="BatchProvideDrugForm.resx">
       <DependentUpon>BatchProvideDrugForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataClassExam.dbml.layout">
+      <DependentUpon>DataClassExam.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="FormBatchPutDrugReportView.resx">
       <DependentUpon>FormBatchPutDrugReportView.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +179,12 @@
     </Compile>
     <None Include="app.config" />
     <None Include="bin\x86\Debug\drugStore.docx" />
+    <None Include="DataClassExam.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassExam.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="health" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,6 +200,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Sign" />
+    <None Include="Sign.docx" />
     <None Include="Signin.png" />
   </ItemGroup>
   <ItemGroup>
