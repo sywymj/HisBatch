@@ -37,10 +37,10 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxResultion = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cameraControl = new Camera_NET.CameraControl();
             this.toolStripButtonCamSet = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSnapshot = new System.Windows.Forms.ToolStripButton();
+            this.cameraControl = new Camera_NET.CameraControl();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,20 +106,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // cameraControl
-            // 
-            this.cameraControl.DirectShowLogFilepath = "";
-            this.cameraControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cameraControl.Location = new System.Drawing.Point(0, 25);
-            this.cameraControl.Name = "cameraControl";
-            this.cameraControl.Size = new System.Drawing.Size(589, 353);
-            this.cameraControl.TabIndex = 2;
-            // 
             // toolStripButtonCamSet
             // 
             this.toolStripButtonCamSet.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCamSet.Image")));
@@ -129,6 +115,11 @@
             this.toolStripButtonCamSet.Text = "设置";
             this.toolStripButtonCamSet.Click += new System.EventHandler(this.toolStripButtonCamSet_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButtonSnapshot
             // 
             this.toolStripButtonSnapshot.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSnapshot.Image")));
@@ -137,6 +128,15 @@
             this.toolStripButtonSnapshot.Size = new System.Drawing.Size(76, 22);
             this.toolStripButtonSnapshot.Text = "图像采集";
             this.toolStripButtonSnapshot.Click += new System.EventHandler(this.toolStripButtonSnapshot_Click);
+            // 
+            // cameraControl
+            // 
+            this.cameraControl.DirectShowLogFilepath = "";
+            this.cameraControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cameraControl.Location = new System.Drawing.Point(0, 25);
+            this.cameraControl.Name = "cameraControl";
+            this.cameraControl.Size = new System.Drawing.Size(589, 353);
+            this.cameraControl.TabIndex = 2;
             // 
             // FormCamera
             // 
@@ -148,6 +148,8 @@
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FormCamera";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormCamera";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormCamera_FormClosed);
             this.Load += new System.EventHandler(this.FormCamera_Load);

@@ -15,31 +15,17 @@ namespace HisPatch
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormMain());
-
-            //DataUtil.IDbHelper dbHelper = new DataUtil.SqlServerHelper("server=192.0.2.3;database=tjdata;uid=tjuser;pwd=tjuser");
-            //CTjReport obj = new CTjReport(dbHelper);
-            //obj.GetWordDocObjByTjID("00010022","1");
-
-            //FormBatchPutDrugReportView dv = new FormBatchPutDrugReportView();
-            //dv.ShowDialog();
-            //FormCamera formCam = new FormCamera();
-            //formCam.ShowDialog();
-            FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
-            formPersonEdit.ShowDialog();
+            
+            
 
 
-            FormLogin formLogin=new FormLogin();
-            if (formLogin.ShowDialog()==DialogResult.OK)
+            FormLogin formLogin = new FormLogin();
+            if (formLogin.ShowDialog() == DialogResult.OK)
             {
-                BatchProvideDrugForm workForm = new BatchProvideDrugForm();
-                workForm.operatorCode = formLogin.gAccount;
-                workForm.UserName = formLogin.gUserName;
-                Application.Run(workForm);
+                FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+                Application.Run(formPersonEdit);
             }
 
-            
-            //Application.Run(new FormBatchPutDrugReportView());
         }
     }
 }

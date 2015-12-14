@@ -79,6 +79,10 @@ namespace HisPatch
 
                 gAccount = dtUsers.Rows[0]["zgdm"].ToString();
                 gUserName = dtUsers.Rows[0]["zgxm"].ToString();
+
+                GSetting.OperatorID = Convert.ToInt32(gAccount);
+                GSetting.OperatorName = gUserName;
+
                 this.DialogResult = DialogResult.OK;
             }
             catch (System.Exception ex)

@@ -78,7 +78,7 @@ namespace HisPatch
 
         private void FormPersonInforEdit_Load(object sender, EventArgs e)
         {
-            this.CurPersonID = new Guid("EA43A6DC-0C6A-4DD2-AA1E-AD1984015189");
+            //this.CurPersonID = new Guid("0CFAEF94-BD65-4D58-B2CD-9B80D0F8DA87");
 
             rect = new Rectangle(3, 3, AvatarRectWidth, AvatarRectHeight);
 
@@ -87,12 +87,19 @@ namespace HisPatch
             bordPen.DashStyle = DashStyle.Custom;
             bordPen.DashPattern = new float[] { 4f, 4f };
 
+            this.toolStripStatusLabelCurOper.Text = "当前用户：" + GSetting.OperatorName;
+            RefreshCurReginfo();
+
+        }
+
+        private void RefreshCurReginfo()
+        {
             try
             {
                 using (DataClassExamDataContext db = new DataClassExamDataContext(GSetting.connStr))
                 {
                     var _p = (from __p in db.PersonReg
-                              where __p.ID == CurPersonID &&  __p.IsFail==0
+                              where __p.ID == CurPersonID && __p.IsFail == 0
                               select __p).FirstOrDefault();
                     if (_p == null)
                     {
@@ -112,7 +119,8 @@ namespace HisPatch
                             Nation = _p.Nation,
                             WorkType = _p.WorkType,
                             Conclusion = _p.Conclusion,
-                            IsLocked = _p.T1 == "T" ? true : false
+                            IsLocked = _p.T1 == "T" ? true : false,
+                            SignNumber = _p.T2
                         };
                         //读取照片
                         CurPersonReg.Avatar = bytesToImage(_p.Avatar.ToArray());
@@ -129,7 +137,6 @@ namespace HisPatch
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
         private Image bytesToImage(byte[] buf)
         {
@@ -526,7 +533,7 @@ namespace HisPatch
                         var serverDate = db.ExecuteQuery<DateTime>("select getdate() ").FirstOrDefault();
                         int serial=db.ExecuteQuery<int>("select ISNULL(max(serail),0)+1 from qualifiedsign").FirstOrDefault();
 
-                        pRegInfo.T1 = "T";
+                        
                         qualifiedSign = new QualifiedSign();
                         qualifiedSign.ID = Guid.NewGuid();
                         qualifiedSign.PersonID = new Guid(pRegInfo.ID.ToString());
@@ -538,6 +545,9 @@ namespace HisPatch
                         qualifiedSign.SignNumber = string.Format(@"茅[2015]第{0:D6}号", serial);
                         qualifiedSign.ExpireDate = serverDate.AddYears(1);
 
+                        pRegInfo.T1 = "T";
+                        pRegInfo.T2 = qualifiedSign.SignNumber;
+
                         db.QualifiedSign.InsertOnSubmit(qualifiedSign);
 
                         db.SubmitChanges();
@@ -546,6 +556,7 @@ namespace HisPatch
 
                     FormBatchPutDrugReportView rv = new FormBatchPutDrugReportView();
                     rv.DispDoc = doc;
+                    rv.WindowState = FormWindowState.Normal;
                     rv.ShowDialog();
                 }
             }
@@ -553,6 +564,17 @@ namespace HisPatch
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void toolStripButtonQuery_Click(object sender, EventArgs e)
+        {
+            FormExamQuery examQuery=new FormExamQuery();
+            if (examQuery.ShowDialog()!=DialogResult.OK)
+            {
+                return;
+            }
+            this.CurPersonID = new Guid(examQuery.QueryHr);
+            RefreshCurReginfo();
         }
 
     }

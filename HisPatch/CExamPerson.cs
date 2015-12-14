@@ -46,6 +46,8 @@ namespace HisPatch
         [Browsable(false)]
         public bool IsLocked { get; set; }
 
+        [DisplayName("合格证号"),ReadOnly(true)]
+        public string SignNumber { get; set; }
         public CExamPerson()
         {
             RegDate = DateTime.Now;
