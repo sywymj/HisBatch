@@ -213,9 +213,9 @@ namespace HisPatch.Properties {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        internal static byte[] Sign {
+        internal static byte[] SignDoc {
             get {
-                object obj = ResourceManager.GetObject("Sign", resourceCulture);
+                object obj = ResourceManager.GetObject("SignDoc", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -227,6 +227,16 @@ namespace HisPatch.Properties {
             get {
                 object obj = ResourceManager.GetObject("Signin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] SignN {
+            get {
+                object obj = ResourceManager.GetObject("SignN", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

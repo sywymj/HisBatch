@@ -1,4 +1,5 @@
 ﻿using Spire.Doc;
+using Spire.Doc.Documents;
 using Spire.Doc.Fields;
 using System;
 using System.Collections.Generic;
@@ -436,7 +437,7 @@ namespace HisPatch
             bmpAvatar = Image.FromStream(ms, true, true);
 
             doc = new Document();
-            doc.LoadFromStream(new MemoryStream(Properties.Resources.Sign), FileFormat.Docx);
+            doc.LoadFromStream(new MemoryStream(Properties.Resources.SignN), FileFormat.Docx);
 
             Spire.Doc.Collections.DocumentObjectCollection oc = doc.Document.Sections[0].Tables[0].Rows[2].Cells[1].Paragraphs[0].ChildObjects;
             foreach (var obj in oc)
@@ -451,6 +452,14 @@ namespace HisPatch
                     docPic.Width = docPic.Width * sca;
                 }
             }
+
+            //Spire.Doc.Fields.TextBox Tb = doc.TextBoxes[0];
+            //Tb.Format.HorizontalOrigin = HorizontalOrigin.InnerMarginArea;
+            //Tb.Format.HorizontalPosition = 0;
+            //Tb.Format.VerticalOrigin = VerticalOrigin.InnerMarginArea;
+            //Tb.Format.VerticalPosition = 0;
+
+
             Table docTable = (Table)doc.Document.Sections[0].Tables[0];
             docTable.Rows[1].Cells[1].Paragraphs[0].Text += pRegInfo.PSN;
             docTable.Rows[1].Cells[2].Paragraphs[0].Text += pSignInfo.SignNumber;
@@ -459,8 +468,8 @@ namespace HisPatch
             docTable.Rows[3].Cells[2].Paragraphs[0].Text += pRegInfo.Age;
             docTable.Rows[3].Cells[3].Paragraphs[0].Text += pRegInfo.WorkType;
 
-            docTable.Rows[4].Cells[2].Paragraphs[0].Text += pSignInfo.SignDate.Value.ToString("yyyy年MM月dd天");
-            docTable.Rows[5].Cells[2].Paragraphs[0].Text += pSignInfo.ExpireDate.Value.ToString("yyyy年MM月dd天");
+            docTable.Rows[4].Cells[2].Paragraphs[0].Text += pSignInfo.SignDate.Value.ToString("yyyy年MM月dd日");
+            docTable.Rows[5].Cells[2].Paragraphs[0].Text += pSignInfo.ExpireDate.Value.ToString("yyyy年MM月dd日");
             return doc;
         }
 
