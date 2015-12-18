@@ -93,7 +93,7 @@ namespace HisPatch
         }
         public override TypeConverter.StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(new string[] { "食品生产经营", "化妆品生产", "公共场所服务", "饮用水供（管）水", "消毒产品生产", "水质处理器（材料）生产", "其他" });
+            return new StandardValuesCollection(new string[] { "食品药品生产经营", "化妆品生产", "公共场所服务", "饮用水供（管）水", "消毒产品生产", "水质处理器（材料）生产", "其他" });
         }
         public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
         {
