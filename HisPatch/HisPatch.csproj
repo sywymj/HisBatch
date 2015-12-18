@@ -90,6 +90,9 @@
     <StartupObject>HisPatch.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonUtil">
+      <HintPath>.\CommonUtil.dll</HintPath>
+    </Reference>
     <Reference Include="DataUtil">
       <HintPath>.\DataUtil.dll</HintPath>
     </Reference>
@@ -240,15 +243,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="SignDoc.doc" />
-    <None Include="SignN" />
     <None Include="SignN.docx" />
+    <None Include="Training.docx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sign" />
-    <None Include="Sign.docx" />
     <None Include="Signin.png" />
   </ItemGroup>
   <ItemGroup>

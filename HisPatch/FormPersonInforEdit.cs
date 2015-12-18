@@ -79,7 +79,7 @@ namespace HisPatch
 
         private void FormPersonInforEdit_Load(object sender, EventArgs e)
         {
-            //this.CurPersonID = new Guid("0CFAEF94-BD65-4D58-B2CD-9B80D0F8DA87");
+            this.CurPersonID = new Guid("0CFAEF94-BD65-4D58-B2CD-9B80D0F8DA87");
 
             rect = new Rectangle(3, 3, AvatarRectWidth, AvatarRectHeight);
 
@@ -439,6 +439,8 @@ namespace HisPatch
             doc = new Document();
             doc.LoadFromStream(new MemoryStream(Properties.Resources.SignN), FileFormat.Docx);
 
+            
+
             Spire.Doc.Collections.DocumentObjectCollection oc = doc.Document.Sections[0].Tables[0].Rows[2].Cells[1].Paragraphs[0].ChildObjects;
             foreach (var obj in oc)
             {
@@ -551,7 +553,7 @@ namespace HisPatch
                         qualifiedSign.SignOperID = GSetting.OperatorID;
                         qualifiedSign.SignOperName = GSetting.OperatorName;
                         qualifiedSign.IsFail = 0;
-                        qualifiedSign.SignNumber = string.Format(@"茅[2015]第{0:D6}号", serial);
+                        qualifiedSign.SignNumber = string.Format(@"422224928{1}{0:D6}", serial,qualifiedSign.Year);
                         qualifiedSign.ExpireDate = serverDate.AddYears(1);
 
                         pRegInfo.T1 = "T";
@@ -584,6 +586,25 @@ namespace HisPatch
             }
             this.CurPersonID = new Guid(examQuery.QueryHr);
             RefreshCurReginfo();
+        }
+
+        private void 新建NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurPersonReg = new CExamPerson();
+            this.propertyGrid1.SelectedObject = CurPersonReg;
+            GSetting.Avatar = null;
+            this.pictureBoxAvatar.Image = null;
+            this.pictureBoxAvatar.Update();
+        }
+
+        private void toolStripMenuItemPraining_Click(object sender, EventArgs e)
+        {
+            FormBatchPutDrugReportView rv = new FormBatchPutDrugReportView();
+            Document doc = new Document(new MemoryStream(Properties.Resources.Training));
+
+            rv.DispDoc = doc;
+            rv.WindowState = FormWindowState.Normal;
+            rv.ShowDialog();
         }
 
     }
