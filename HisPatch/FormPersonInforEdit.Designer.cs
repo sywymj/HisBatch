@@ -33,17 +33,18 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCurOper = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
             this.toolStripButtonCam = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSelPic = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSaveReg = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDel = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonQuery = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonGetApplyTable = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,13 +65,14 @@
             this.全选AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemPrintApplyTable = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPrintSign = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPraining = new System.Windows.Forms.ToolStripMenuItem();
             this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonGetApplyTable = new System.Windows.Forms.ToolStripButton();
-            this.toolStripMenuItemPrintSign = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemPraining = new System.Windows.Forms.ToolStripMenuItem();
+            this.LabelPsnStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripButtonReadPsnCard = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -81,7 +83,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelCurOper});
+            this.toolStripStatusLabelCurOper,
+            this.LabelPsnStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 429);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(745, 22);
@@ -91,6 +94,9 @@
             // toolStripStatusLabelCurOper
             // 
             this.toolStripStatusLabelCurOper.AutoSize = false;
+            this.toolStripStatusLabelCurOper.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabelCurOper.Name = "toolStripStatusLabelCurOper";
             this.toolStripStatusLabelCurOper.Size = new System.Drawing.Size(200, 17);
             this.toolStripStatusLabelCurOper.Text = "当前用户：";
@@ -99,6 +105,7 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonReadPsnCard,
             this.toolStripButtonCam,
             this.toolStripButtonSelPic,
             this.toolStripButtonSaveReg,
@@ -111,54 +118,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(745, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.tableLayoutPanel1.SetRowSpan(this.propertyGrid1, 2);
-            this.propertyGrid1.Size = new System.Drawing.Size(259, 373);
-            this.propertyGrid1.TabIndex = 0;
-            this.propertyGrid1.ToolbarVisible = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.propertyGrid1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBoxAvatar, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(745, 379);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.Filter = "Jpeg|*.jpg|Png|*.png|Bmp|*.bmp";
-            // 
-            // pictureBoxAvatar
-            // 
-            this.pictureBoxAvatar.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBoxAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxAvatar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxAvatar.Location = new System.Drawing.Point(268, 3);
-            this.pictureBoxAvatar.Name = "pictureBoxAvatar";
-            this.pictureBoxAvatar.Size = new System.Drawing.Size(474, 335);
-            this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAvatar.TabIndex = 1;
-            this.pictureBoxAvatar.TabStop = false;
-            this.pictureBoxAvatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxAvatar_Paint);
-            this.pictureBoxAvatar.DoubleClick += new System.EventHandler(this.pictureBoxAvatar_DoubleClick);
-            this.pictureBoxAvatar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseDown);
-            this.pictureBoxAvatar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseMove);
-            this.pictureBoxAvatar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseUp);
             // 
             // toolStripButtonCam
             // 
@@ -204,6 +163,15 @@
             this.toolStripButtonQuery.Text = "查询";
             this.toolStripButtonQuery.Click += new System.EventHandler(this.toolStripButtonQuery_Click);
             // 
+            // toolStripButtonGetApplyTable
+            // 
+            this.toolStripButtonGetApplyTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetApplyTable.Image")));
+            this.toolStripButtonGetApplyTable.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetApplyTable.Name = "toolStripButtonGetApplyTable";
+            this.toolStripButtonGetApplyTable.Size = new System.Drawing.Size(112, 22);
+            this.toolStripButtonGetApplyTable.Text = "打印健康检查表";
+            this.toolStripButtonGetApplyTable.Click += new System.EventHandler(this.toolStripButtonGetApplyTable_Click);
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
@@ -212,6 +180,54 @@
             this.toolStripButton1.Size = new System.Drawing.Size(112, 22);
             this.toolStripButton1.Text = "签发健康合格证";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Categorized;
+            this.tableLayoutPanel1.SetRowSpan(this.propertyGrid1, 2);
+            this.propertyGrid1.Size = new System.Drawing.Size(259, 373);
+            this.propertyGrid1.TabIndex = 0;
+            this.propertyGrid1.ToolbarVisible = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 265F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.propertyGrid1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxAvatar, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 50);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(745, 379);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // pictureBoxAvatar
+            // 
+            this.pictureBoxAvatar.BackColor = System.Drawing.SystemColors.Info;
+            this.pictureBoxAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxAvatar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxAvatar.Location = new System.Drawing.Point(268, 3);
+            this.pictureBoxAvatar.Name = "pictureBoxAvatar";
+            this.pictureBoxAvatar.Size = new System.Drawing.Size(474, 335);
+            this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAvatar.TabIndex = 1;
+            this.pictureBoxAvatar.TabStop = false;
+            this.pictureBoxAvatar.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxAvatar_Paint);
+            this.pictureBoxAvatar.DoubleClick += new System.EventHandler(this.pictureBoxAvatar_DoubleClick);
+            this.pictureBoxAvatar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseDown);
+            this.pictureBoxAvatar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseMove);
+            this.pictureBoxAvatar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxAvatar_MouseUp);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "Jpeg|*.jpg|Png|*.png|Bmp|*.bmp";
             // 
             // menuStrip1
             // 
@@ -382,6 +398,20 @@
             this.ToolStripMenuItemPrintApplyTable.Text = "打印健康检查表";
             this.ToolStripMenuItemPrintApplyTable.Click += new System.EventHandler(this.toolStripButtonGetApplyTable_Click);
             // 
+            // toolStripMenuItemPrintSign
+            // 
+            this.toolStripMenuItemPrintSign.Name = "toolStripMenuItemPrintSign";
+            this.toolStripMenuItemPrintSign.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemPrintSign.Text = "签发健康合格证";
+            this.toolStripMenuItemPrintSign.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripMenuItemPraining
+            // 
+            this.toolStripMenuItemPraining.Name = "toolStripMenuItemPraining";
+            this.toolStripMenuItemPraining.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemPraining.Text = "打印卫生知识培训合格证";
+            this.toolStripMenuItemPraining.Click += new System.EventHandler(this.toolStripMenuItemPraining_Click);
+            // 
             // 选项OToolStripMenuItem
             // 
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
@@ -400,36 +430,32 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(122, 6);
             // 
             // 关于AToolStripMenuItem
             // 
             this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.关于AToolStripMenuItem.Text = "关于(&A)...";
             // 
-            // toolStripButtonGetApplyTable
+            // LabelPsnStatus
             // 
-            this.toolStripButtonGetApplyTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetApplyTable.Image")));
-            this.toolStripButtonGetApplyTable.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonGetApplyTable.Name = "toolStripButtonGetApplyTable";
-            this.toolStripButtonGetApplyTable.Size = new System.Drawing.Size(112, 22);
-            this.toolStripButtonGetApplyTable.Text = "打印健康检查表";
-            this.toolStripButtonGetApplyTable.Click += new System.EventHandler(this.toolStripButtonGetApplyTable_Click);
+            this.LabelPsnStatus.AutoSize = false;
+            this.LabelPsnStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.LabelPsnStatus.Name = "LabelPsnStatus";
+            this.LabelPsnStatus.Size = new System.Drawing.Size(140, 17);
+            this.LabelPsnStatus.Text = "身份证读卡器连接成功";
             // 
-            // toolStripMenuItemPrintSign
+            // toolStripButtonReadPsnCard
             // 
-            this.toolStripMenuItemPrintSign.Name = "toolStripMenuItemPrintSign";
-            this.toolStripMenuItemPrintSign.Size = new System.Drawing.Size(208, 22);
-            this.toolStripMenuItemPrintSign.Text = "签发健康合格证";
-            this.toolStripMenuItemPrintSign.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripMenuItemPraining
-            // 
-            this.toolStripMenuItemPraining.Name = "toolStripMenuItemPraining";
-            this.toolStripMenuItemPraining.Size = new System.Drawing.Size(208, 22);
-            this.toolStripMenuItemPraining.Text = "打印卫生知识培训合格证";
-            this.toolStripMenuItemPraining.Click += new System.EventHandler(this.toolStripMenuItemPraining_Click);
+            this.toolStripButtonReadPsnCard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReadPsnCard.Image")));
+            this.toolStripButtonReadPsnCard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonReadPsnCard.Name = "toolStripButtonReadPsnCard";
+            this.toolStripButtonReadPsnCard.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButtonReadPsnCard.Text = "读身份证";
+            this.toolStripButtonReadPsnCard.Click += new System.EventHandler(this.toolStripButtonReadPsnCard_Click);
             // 
             // FormPersonInforEdit
             // 
@@ -503,5 +529,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonGetApplyTable;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPrintSign;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPraining;
+        private System.Windows.Forms.ToolStripStatusLabel LabelPsnStatus;
+        private System.Windows.Forms.ToolStripButton toolStripButtonReadPsnCard;
     }
 }

@@ -16,17 +16,17 @@ namespace HisPatch
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
-            Application.Run(formPersonEdit);
-            
+            //FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+            //Application.Run(formPersonEdit);
 
 
-            //FormLogin formLogin = new FormLogin();
-            //if (formLogin.ShowDialog() == DialogResult.OK)
-            //{
-            //    FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
-            //    Application.Run(formPersonEdit);
-            //}
+
+            FormLogin formLogin = new FormLogin();
+            if (formLogin.ShowDialog() == DialogResult.OK)
+            {
+                FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+                Application.Run(formPersonEdit);
+            }
 
         }
     }

@@ -7,8 +7,10 @@ using System.Text;
 
 namespace HisPatch
 {
-    public class CExamPerson
+    public class CExamPerson:INotifyPropertyChanged
     {
+        string _psn = string.Empty;
+
         [Browsable(false)]
         public Guid ID { get; set; }
         [Category("个人信息登记")]
@@ -21,7 +23,25 @@ namespace HisPatch
 
         [Category("个人信息登记")]
         [DisplayName("身份证号码")]
-        public string PSN { get; set; }
+        [RefreshProperties(RefreshProperties.All)]
+        public string PSN
+        {
+            get { return _psn; }
+            set
+            {
+                if (value.Length==18)
+                {
+                    _psn = value;
+                    TimeSpan ts =DateTime.Now- DateTime.Parse(string.Format(@"{0}-{1}-{2}", _psn.Substring(6, 4), _psn.Substring(10, 2), _psn.Substring(12, 2))) ;
+                    this.Age = Math.Floor((decimal)ts.Days / 365).ToString();
+                    OnPropertyChanged("Age");
+                }
+                else
+                {
+                    throw new Exception("请输入18位数字的身份证号");
+                }
+            }
+        }
 
         [Category("个人信息登记")]
         [DisplayName("姓名")]
@@ -53,6 +73,16 @@ namespace HisPatch
             RegDate = DateTime.Now;
             ID = Guid.NewGuid();
             IsLocked = false;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
     public class SexConvert : StringConverter

@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CVR100A;
 
 namespace HisPatch
 {
@@ -41,7 +42,14 @@ namespace HisPatch
 
         private void FormPersonInforEdit_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            try
+            {
+                CVRSDK.CVR_CloseComm();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void toolStripButtonSelPic_Click(object sender, EventArgs e)
@@ -77,6 +85,7 @@ namespace HisPatch
         public Guid CurPersonID { get; set; }
         CExamPerson CurPersonReg = null;
 
+        int iRetUSB = 0, iRetCOM = 0;
         private void FormPersonInforEdit_Load(object sender, EventArgs e)
         {
             this.CurPersonID = new Guid("0CFAEF94-BD65-4D58-B2CD-9B80D0F8DA87");
@@ -90,6 +99,45 @@ namespace HisPatch
 
             this.toolStripStatusLabelCurOper.Text = "当前用户：" + GSetting.OperatorName;
             RefreshCurReginfo();
+            try
+            {
+
+                int iPort;
+                for (iPort = 1001; iPort <= 1016; iPort++)
+                {
+                    iRetUSB = CVRSDK.CVR_InitComm(iPort);
+                    if (iRetUSB == 1)
+                    {
+                        break;
+                    }
+                }
+                if (iRetUSB != 1)
+                {
+                    for (iPort = 1; iPort <= 4; iPort++)
+                    {
+                        iRetCOM = CVRSDK.CVR_InitComm(iPort);
+                        if (iRetCOM == 1)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                if ((iRetCOM == 1) || (iRetUSB == 1))
+                {
+                    this.LabelPsnStatus.Text = "身份证读卡器连接成功";
+                }
+                else
+                {
+                    this.LabelPsnStatus.Text= "身份证读卡器连接失败";
+                    this.toolStripButtonReadPsnCard.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
 
         }
 
@@ -590,6 +638,11 @@ namespace HisPatch
 
         private void 新建NToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ClearBoard();
+        }
+
+        private void ClearBoard()
+        {
             CurPersonReg = new CExamPerson();
             this.propertyGrid1.SelectedObject = CurPersonReg;
             GSetting.Avatar = null;
@@ -605,6 +658,62 @@ namespace HisPatch
             rv.DispDoc = doc;
             rv.WindowState = FormWindowState.Normal;
             rv.ShowDialog();
+        }
+
+        private void toolStripButtonReadPsnCard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearBoard();
+
+                int authenticate = CVRSDK.CVR_Authenticate();
+                if (authenticate == 1)
+                {
+                    int readContent = CVRSDK.CVR_Read_Content(4);
+                    if (readContent == 1)
+                    {
+                        StringBuilder sb = null;
+                        int strLen=-1;
+
+                        sb = new StringBuilder(128);
+                        CVRSDK.GetPeopelName(sb, ref strLen);
+                        CurPersonReg.Name = sb.ToString();
+                        Console.WriteLine(sb.ToString());
+
+                        sb = new StringBuilder(128);
+                        CVRSDK.GetPeopleIDCode(sb, ref strLen);
+                        CurPersonReg.PSN = sb.ToString();
+
+                        sb = new StringBuilder(128);
+                        CVRSDK.GetPeopleNation(sb,ref strLen);
+                        CurPersonReg.Nation=sb.ToString()+"族";
+
+                        sb = new StringBuilder(128);
+                        CVRSDK.GetPeopleSex(sb, ref strLen);
+                        CurPersonReg.Sex = sb.ToString();
+
+                        if (File.Exists("zp.bmp"))
+                        {
+                            this.pictureBoxAvatar.Image = Image.FromFile("zp.bmp");
+                        }
+
+                        this.pictureBoxAvatar.Update();
+                        this.propertyGrid1.Refresh();
+                    }
+                    else
+                    {
+                        throw new Exception("读卡操作失败！");
+                    }
+                }
+                else
+                {
+                    throw new Exception("未放卡或卡片放置不正确");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }
