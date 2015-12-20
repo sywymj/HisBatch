@@ -88,7 +88,7 @@ namespace HisPatch
         int iRetUSB = 0, iRetCOM = 0;
         private void FormPersonInforEdit_Load(object sender, EventArgs e)
         {
-            this.CurPersonID = new Guid("0CFAEF94-BD65-4D58-B2CD-9B80D0F8DA87");
+            //this.CurPersonID = new Guid("0CFAEF94-BD65-4D58-B2CD-9B80D0F8DA87");
 
             rect = new Rectangle(3, 3, AvatarRectWidth, AvatarRectHeight);
 

@@ -74,6 +74,9 @@ namespace HisPatch
             ID = Guid.NewGuid();
             IsLocked = false;
         }
+        [Browsable(false)]
+        public DateTime SignDate { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)

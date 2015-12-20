@@ -13,5 +13,11 @@ namespace HisPatch
         internal static string connStr = "server=192.0.2.3;database=examination;uid=cbsoft;pwd=cbsoft.cbhis";
 
         //internal static string connStr = "server=.;database=examination;uid=cbsoft;pwd=cbsoft.cbhis";
+
+        public static PointF PaperSize6InOffset = new PointF(0, 0);
+        public static string PaperSize6InPrinterName = string.Empty;
+        public static PointF PaperSizeA4Offset = new PointF(0, 0);
+        public static string PaperSizeA4PrinterName = string.Empty;
+        public static string PrinterHighQualityResultionName = string.Empty;
     }
 }
