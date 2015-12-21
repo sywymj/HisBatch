@@ -32,5 +32,14 @@ namespace HisPatch.Properties {
                 return ((string)(this["ExaminationConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EPSON L310 Series")]
+        public string CarDPrinter {
+            get {
+                return ((string)(this["CarDPrinter"]));
+            }
+        }
     }
 }

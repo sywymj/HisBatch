@@ -31,11 +31,12 @@ namespace HisPatch
 
             //obj.DrawOneCard(pinfo, new Point(10, 10), this.pictureBox1.CreateGraphics());
             //obj.DrawOneCard(pinfo, new Point(105, 10), this.pictureBox1.CreateGraphics());
-            //obj.DrawSingeInPhotoPaper6In(pinfo, string.Empty, true,true);
+            obj.OffSetPoint = new PointF(-1.5f, 0);
+            obj.DrawSingeInPhotoPaper6In(pinfo, "EPSON L310 Series", true,true);
             
             List<CExamPerson> ls = new List<CExamPerson>();
             {
-                for (int i = 1; i < 12; i++)
+                for (int i = 1; i < 3; i++)
                 {
                     pinfo = new CExamPerson();
                     pinfo.PSN = "420300197612210911";
@@ -50,11 +51,8 @@ namespace HisPatch
                     ls.Add(pinfo);
                 }
             }
-            obj.DrawManyInA4(ls, string.Empty, true,false);
-
-            
-
-
+            obj.OffSetPoint = new PointF(2.5f, 0);
+            //obj.DrawManyInA4(ls, "EPSON L310 Series", true,true);          
         }
     }
 }

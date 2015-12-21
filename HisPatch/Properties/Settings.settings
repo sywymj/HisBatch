@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.;Initial Catalog=Examination;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="CarDPrinter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EPSON L310 Series</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

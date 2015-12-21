@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>从业人员健康体检</ProductName>
     <PublisherName>茅箭区医院体检</PublisherName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -340,6 +340,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SignTj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sdtapi.dll" />
+    <Content Include="termb.dll" />
+    <Content Include="UnPack.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

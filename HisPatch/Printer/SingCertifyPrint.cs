@@ -18,7 +18,11 @@ namespace HisPatch.Printer
         private PointF paperA4Line = new PointF(10, 12);
         private SizeF cardSize = new SizeF(85.6f, 54);
         private Action<CExamPerson, PointF, Graphics> handleDraw;
-
+        public PointF OffSetPoint { get; set; }
+        public SingCertifyPrint()
+        {
+            OffSetPoint = new PointF(0, 0);
+        }
 
         public void DrawManyInA4(IEnumerable<CExamPerson> pIEnumPersonInfo, string printerName, bool IsPreview,bool IsBack)
         {
@@ -48,17 +52,21 @@ namespace HisPatch.Printer
                 }
             }
 
-            
-            pdA4.DefaultPageSettings.Margins.Top = (int)GSetting.PaperSizeA4Offset.X;
+            pdA4.DefaultPageSettings.Margins.Top = 0;
             pdA4.DefaultPageSettings.Margins.Bottom = 0;
-            pdA4.DefaultPageSettings.Margins.Left = (int)GSetting.PaperSizeA4Offset.Y;
+            pdA4.DefaultPageSettings.Margins.Left = 0;
             pdA4.DefaultPageSettings.Margins.Right = 0;
 
-            pdA4.DefaultPageSettings.Landscape = true;
+            pdA4.DefaultPageSettings.Landscape = false;
 
             if (!string.IsNullOrEmpty(printerName))
             {
                 pdA4.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
+                Console.WriteLine(pdA4.DefaultPageSettings.PrinterResolution.Kind.ToString());
+                foreach (PrinterResolution _pr in  pdA4.DefaultPageSettings.PrinterSettings.PrinterResolutions)
+                {
+                    Console.WriteLine(_pr.Kind.ToString());
+                }
             }
 
             pdA4.PrintPage += pdA4_PrintPage;
@@ -90,8 +98,8 @@ namespace HisPatch.Printer
             while (curDrawPos < curPersonInfoArray.Length && countPerPage<9)
             {
                 
-                curRow =curDrawPos % 3;
-                curCol = ((curDrawPos % 9) / 3);
+                curRow = ((curDrawPos % 8) / 2);
+                curCol = curDrawPos % 2;
 
                 PointF __drawPoint=new PointF((curCol+1)*paperA4Line.X+curCol*cardSize.Width,(curRow+1)*paperA4Line.Y+curRow*cardSize.Height);
 
@@ -127,17 +135,25 @@ namespace HisPatch.Printer
             curPersonInfo = pInfo;
             PrintDocument pd = new PrintDocument();
             PaperSize ps6in = new PaperSize("ps6in",Convert.ToInt32( 1020 / 2.54), Convert.ToInt32(1520/ 2.54));
-            
-            pd.DefaultPageSettings.Margins.Top = (int)GSetting.PaperSize6InOffset.X;
+
+            pd.DefaultPageSettings.Margins.Top = 0;
             pd.DefaultPageSettings.Margins.Bottom = 0;
-            pd.DefaultPageSettings.Margins.Left = (int)GSetting.PaperSize6InOffset.Y;
+            pd.DefaultPageSettings.Margins.Left = 0;
             pd.DefaultPageSettings.Margins.Right = 0;
             pd.DefaultPageSettings.PaperSize = ps6in;
 
             //pd.DefaultPageSettings.Landscape = true;
+            PrintDialog pdd = new PrintDialog();
+            pdd.ShowDialog();
+            PrinterResolution prr = new PrinterResolution();
+            prr.Kind=PrinterResolutionKind.Low;
+
             if (!string.IsNullOrEmpty(printerName))
             {
                 pd.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
+                //pd.DefaultPageSettings.PrinterResolution = prr;
+                
+               
             }
             pd.PrintPage += pd_PrintPage;
             if (IsPreview)
@@ -168,7 +184,7 @@ namespace HisPatch.Printer
             {
                 g.PageUnit = GraphicsUnit.Millimeter;
                 g.ResetTransform();
-                g.TranslateTransform(originPoint.X, originPoint.Y);
+                g.TranslateTransform(originPoint.X+OffSetPoint.X, originPoint.Y+OffSetPoint.Y);
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQuality.HighQuality;
@@ -259,7 +275,7 @@ namespace HisPatch.Printer
             {
                 g.PageUnit = GraphicsUnit.Millimeter;                
                 g.ResetTransform();
-                g.TranslateTransform(originPoint.X, originPoint.Y);
+                g.TranslateTransform(originPoint.X+OffSetPoint.X, originPoint.Y+OffSetPoint.Y);
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQuality.HighQuality;
