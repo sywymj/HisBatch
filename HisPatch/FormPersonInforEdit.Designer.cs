@@ -32,7 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPersonInforEdit));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCurOper = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LabelPsnStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonReadPsnCard = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCam = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSelPic = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSaveReg = new System.Windows.Forms.ToolStripButton();
@@ -71,8 +73,6 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LabelPsnStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButtonReadPsnCard = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -102,6 +102,16 @@
             this.toolStripStatusLabelCurOper.Text = "当前用户：";
             this.toolStripStatusLabelCurOper.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // LabelPsnStatus
+            // 
+            this.LabelPsnStatus.AutoSize = false;
+            this.LabelPsnStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.LabelPsnStatus.Name = "LabelPsnStatus";
+            this.LabelPsnStatus.Size = new System.Drawing.Size(140, 17);
+            this.LabelPsnStatus.Text = "身份证读卡器连接失败";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -118,6 +128,15 @@
             this.toolStrip1.Size = new System.Drawing.Size(745, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonReadPsnCard
+            // 
+            this.toolStripButtonReadPsnCard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReadPsnCard.Image")));
+            this.toolStripButtonReadPsnCard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonReadPsnCard.Name = "toolStripButtonReadPsnCard";
+            this.toolStripButtonReadPsnCard.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButtonReadPsnCard.Text = "读身份证";
+            this.toolStripButtonReadPsnCard.Click += new System.EventHandler(this.toolStripButtonReadPsnCard_Click);
             // 
             // toolStripButtonCam
             // 
@@ -437,25 +456,6 @@
             this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
             this.关于AToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.关于AToolStripMenuItem.Text = "关于(&A)...";
-            // 
-            // LabelPsnStatus
-            // 
-            this.LabelPsnStatus.AutoSize = false;
-            this.LabelPsnStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.LabelPsnStatus.Name = "LabelPsnStatus";
-            this.LabelPsnStatus.Size = new System.Drawing.Size(140, 17);
-            this.LabelPsnStatus.Text = "身份证读卡器连接成功";
-            // 
-            // toolStripButtonReadPsnCard
-            // 
-            this.toolStripButtonReadPsnCard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReadPsnCard.Image")));
-            this.toolStripButtonReadPsnCard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonReadPsnCard.Name = "toolStripButtonReadPsnCard";
-            this.toolStripButtonReadPsnCard.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButtonReadPsnCard.Text = "读身份证";
-            this.toolStripButtonReadPsnCard.Click += new System.EventHandler(this.toolStripButtonReadPsnCard_Click);
             // 
             // FormPersonInforEdit
             // 
