@@ -24,6 +24,66 @@ namespace HisPatch.Printer
             OffSetPoint = new PointF(0, 0);
         }
 
+        public static bool QualifiedSign(CExamPerson _CurPersonReg)
+        {
+            try
+            {
+                //Guid pRegInfo_ID = Guid.Empty;
+                using (DataClassExamDataContext db = new DataClassExamDataContext(GSetting.connStr))
+                {
+                    var pRegInfo = (from _p in db.PersonReg where _p.ID == _CurPersonReg.ID && _p.IsFail == 0 select _p).FirstOrDefault();
+                    if (pRegInfo == null)
+                    {
+                        throw new Exception("人员信息有误或者没有保存登记信息！！ ");
+                    }
+                    var qualifiedSign = (from _p in pRegInfo.QualifiedSign where _p.IsFail == 0 select _p).FirstOrDefault();
+                    if (qualifiedSign == null)
+                    {
+                        var serverDate = db.ExecuteQuery<DateTime>("select getdate() ").FirstOrDefault();
+                        int serial = db.ExecuteQuery<int>("select ISNULL(max(serail),0)+1 from qualifiedsign").FirstOrDefault();
+
+
+                        qualifiedSign = new QualifiedSign();
+                        qualifiedSign.ID = Guid.NewGuid();
+                        qualifiedSign.PersonID = new Guid(pRegInfo.ID.ToString());
+                        qualifiedSign.Serail = serial;
+                        qualifiedSign.Year = serverDate.Year.ToString();
+                        qualifiedSign.SignOperID = GSetting.OperatorID;
+                        qualifiedSign.SignOperName = GSetting.OperatorName;
+                        qualifiedSign.IsFail = 0;
+                        qualifiedSign.SignNumber = string.Format(@"422224928{1}{0:D6}", serial, qualifiedSign.Year);
+                        qualifiedSign.ExpireDate = serverDate.AddYears(1).AddDays(-1);
+
+                        pRegInfo.T1 = "T";
+                        pRegInfo.T2 = qualifiedSign.SignNumber;
+
+                        //pRegInfo_ID = new Guid(pRegInfo.ID.ToString());
+
+                        db.QualifiedSign.InsertOnSubmit(qualifiedSign);
+
+                        db.SubmitChanges();
+                    }
+
+                }
+
+                //Document doc = MakeSignTableDoc(pRegInfo_ID);
+
+                //FormBatchPutDrugReportView rv = new FormBatchPutDrugReportView();
+                //rv.DispDoc = doc;
+                //rv.WindowState = FormWindowState.Normal;
+                //rv.ShowDialog();
+
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+
+
         public void DrawManyInA4(IEnumerable<CExamPerson> pIEnumPersonInfo, string printerName, bool IsPreview,bool IsBack)
         {
             if (pIEnumPersonInfo==null || (curPersonInfoArray=pIEnumPersonInfo.ToArray()).Length<=0)
@@ -143,10 +203,10 @@ namespace HisPatch.Printer
             pd.DefaultPageSettings.PaperSize = ps6in;
 
             //pd.DefaultPageSettings.Landscape = true;
-            PrintDialog pdd = new PrintDialog();
-            pdd.ShowDialog();
-            PrinterResolution prr = new PrinterResolution();
-            prr.Kind=PrinterResolutionKind.Low;
+            //PrintDialog pdd = new PrintDialog();
+            //pdd.ShowDialog();
+            //PrinterResolution prr = new PrinterResolution();
+            //prr.Kind=PrinterResolutionKind.Low;
 
             if (!string.IsNullOrEmpty(printerName))
             {
@@ -327,7 +387,7 @@ namespace HisPatch.Printer
                 posContent.Y += lineHeight;
                 g.DrawString("体检日期：" + pInfo.SignDate.ToString("yyyy年MM月dd日"), _fontTitle2, _brushBlack, posContent.X, posContent.Y);
                 posContent.Y += lineHeight;
-                g.DrawString("有效期止：" + pInfo.SignDate.AddYears(1).ToString("yyyy年MM月dd日"), _fontTitle2, _brushBlack, posContent.X, posContent.Y);
+                g.DrawString("有效期止：" + pInfo.SignDate.AddYears(1).AddDays(-1).ToString("yyyy年MM月dd日"), _fontTitle2, _brushBlack, posContent.X, posContent.Y);
                 posContent.Y += lineHeight;
                 g.DrawString("健康检查机构（盖章）茅箭区人民医院", _fontTitle2, _brushBlack, posContent.X, posContent.Y);
 

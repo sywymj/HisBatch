@@ -16,8 +16,8 @@ namespace HisPatch
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
-            FormPictureTest formPersonEdit = new FormPictureTest();
+            FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+            //FormPictureTest formPersonEdit = new FormPictureTest();
             Application.Run(formPersonEdit);
 
 

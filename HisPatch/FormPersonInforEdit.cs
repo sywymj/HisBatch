@@ -143,20 +143,30 @@ namespace HisPatch
 
         private void RefreshCurReginfo()
         {
+            CurPersonReg=PID2ExamPerson(CurPersonID);
+            this.pictureBoxAvatar.Image = CurPersonReg.Avatar;
+            this.pictureBoxAvatar.Update();
+
+            this.propertyGrid1.SelectedObject = CurPersonReg;
+        }
+
+        public static CExamPerson PID2ExamPerson(Guid pid)
+        {
+            CExamPerson __CurPersonReg = null;
             try
             {
                 using (DataClassExamDataContext db = new DataClassExamDataContext(GSetting.connStr))
                 {
                     var _p = (from __p in db.PersonReg
-                              where __p.ID == CurPersonID && __p.IsFail == 0
+                              where __p.ID == pid && __p.IsFail == 0
                               select __p).FirstOrDefault();
                     if (_p == null)
                     {
-                        CurPersonReg = new CExamPerson();
+                        __CurPersonReg = new CExamPerson();
                     }
                     else
                     {
-                        CurPersonReg = new CExamPerson()
+                        __CurPersonReg = new CExamPerson()
                         {
                             ID = _p.ID,
                             RegDate = _p.RegDate.Value,
@@ -169,22 +179,32 @@ namespace HisPatch
                             WorkType = _p.WorkType,
                             Conclusion = _p.Conclusion,
                             IsLocked = _p.T1 == "T" ? true : false,
-                            SignNumber = _p.T2
+                            SignNumber = _p.T2,
+                            Job = _p.T3
                         };
+                        QualifiedSign signInfo = _p.QualifiedSign.FirstOrDefault();
+                        if (signInfo != null)
+                        {
+                            __CurPersonReg.SignDate = signInfo.SignDate ?? DateTime.Now;
+                        }
                         //读取照片
-                        CurPersonReg.Avatar = bytesToImage(_p.Avatar.ToArray());
-                        this.pictureBoxAvatar.Image = CurPersonReg.Avatar;
-                        this.pictureBoxAvatar.Update();
+                        __CurPersonReg.Avatar = bytesToImage(_p.Avatar.ToArray());
+
+                        
                     }
 
 
                 }
 
-                this.propertyGrid1.SelectedObject = CurPersonReg;
+                return __CurPersonReg;
+
+                
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
+                return null;
             }
         }
         private Image bytesToImage(byte[] buf)
@@ -197,7 +217,7 @@ namespace HisPatch
                 }
                 using (MemoryStream ms = new MemoryStream(buf))
                 {
-                    return Image.FromStream(ms);
+                    return new Bitmap(Image.FromStream(ms)) ;
                 }
             }
             catch (System.Exception ex)
@@ -425,6 +445,7 @@ namespace HisPatch
                     pp.RegOperName = GSetting.OperatorName;
                     pp.IsFail = 0;
                     pp.T1 = "F";
+                    pp.T3 = CurPersonReg.Job;
 
                     if (pp.ID == Guid.Empty)
                     {
@@ -577,54 +598,21 @@ namespace HisPatch
             {
                 return;
             }
-            try
+            if (HisPatch.Printer.SingCertifyPrint.QualifiedSign(CurPersonReg))
             {
-                using (DataClassExamDataContext db = new DataClassExamDataContext(GSetting.connStr))
-                {
-                    var pRegInfo = (from _p in db.PersonReg where _p.ID == CurPersonReg.ID && _p.IsFail == 0 select _p).FirstOrDefault();
-                    if (pRegInfo==null)
-                    {
-                        throw new Exception("人员信息有误或者没有保存登记信息！！ ");
-                    }
-                    var qualifiedSign = (from _p in pRegInfo.QualifiedSign where _p.IsFail == 0 select _p).FirstOrDefault();
-                    if (qualifiedSign==null)
-                    {
-                        var serverDate = db.ExecuteQuery<DateTime>("select getdate() ").FirstOrDefault();
-                        int serial=db.ExecuteQuery<int>("select ISNULL(max(serail),0)+1 from qualifiedsign").FirstOrDefault();
+                RefreshCurReginfo();
 
-                        
-                        qualifiedSign = new QualifiedSign();
-                        qualifiedSign.ID = Guid.NewGuid();
-                        qualifiedSign.PersonID = new Guid(pRegInfo.ID.ToString());
-                        qualifiedSign.Serail = serial;
-                        qualifiedSign.Year = serverDate.Year.ToString();
-                        qualifiedSign.SignOperID = GSetting.OperatorID;
-                        qualifiedSign.SignOperName = GSetting.OperatorName;
-                        qualifiedSign.IsFail = 0;
-                        qualifiedSign.SignNumber = string.Format(@"422224928{1}{0:D6}", serial,qualifiedSign.Year);
-                        qualifiedSign.ExpireDate = serverDate.AddYears(1);
-
-                        pRegInfo.T1 = "T";
-                        pRegInfo.T2 = qualifiedSign.SignNumber;
-
-                        db.QualifiedSign.InsertOnSubmit(qualifiedSign);
-
-                        db.SubmitChanges();
-                    }
-                    Document doc = MakeSignTableDoc(pRegInfo.ID);
-
-                    FormBatchPutDrugReportView rv = new FormBatchPutDrugReportView();
-                    rv.DispDoc = doc;
-                    rv.WindowState = FormWindowState.Normal;
-                    rv.ShowDialog();
-                }
+                Printer.SingCertifyPrint obj = new Printer.SingCertifyPrint();
+                obj.DrawSingeInPhotoPaper6In(CurPersonReg, GSetting.PaperSize6InPrinterName, true, false);
             }
-            catch (System.Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("签发失败，请联系管理员！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
+        
         private void toolStripButtonQuery_Click(object sender, EventArgs e)
         {
             FormExamQuery examQuery=new FormExamQuery();
@@ -713,6 +701,37 @@ namespace HisPatch
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void toolStripButtonDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurPersonReg == null || CurPersonReg.IsLocked)
+                {
+                    throw new Exception("登记参数错误或者该登记信息已锁定！");
+                }
+                if (MessageBox.Show("您确认要删除该登记信息吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK)
+                {
+                    return;
+                }
+
+                using (DataClassExamDataContext db = new DataClassExamDataContext(GSetting.connStr))
+                {
+                    var pp = (from _p in db.PersonReg where _p.ID == CurPersonReg.ID && _p.T1 != "T" && _p.IsFail == 0 select _p).FirstOrDefault();
+                    if (pp!=null)
+                    {
+                        pp.IsFail = 1;
+                        db.SubmitChanges();
+                    }
+
+                }
+                ClearBoard();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "删除登记信息错误");
             }
         }
 

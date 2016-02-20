@@ -342,9 +342,15 @@
     <None Include="SignTj.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sdtapi.dll" />
-    <Content Include="termb.dll" />
-    <Content Include="UnPack.dll" />
+    <Content Include="sdtapi.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="termb.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UnPack.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

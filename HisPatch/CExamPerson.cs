@@ -68,6 +68,8 @@ namespace HisPatch
 
         [DisplayName("合格证号"),ReadOnly(true)]
         public string SignNumber { get; set; }
+        [DisplayName("工作单位")]
+        public string Job { get; set; }
         public CExamPerson()
         {
             RegDate = DateTime.Now;

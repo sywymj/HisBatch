@@ -172,6 +172,7 @@
             this.toolStripButtonDel.Name = "toolStripButtonDel";
             this.toolStripButtonDel.Size = new System.Drawing.Size(100, 22);
             this.toolStripButtonDel.Text = "删除登记信息";
+            this.toolStripButtonDel.Click += new System.EventHandler(this.toolStripButtonDel_Click);
             // 
             // toolStripButtonQuery
             // 
