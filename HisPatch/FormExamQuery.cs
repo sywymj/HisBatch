@@ -96,6 +96,7 @@ namespace HisPatch
 
         private void toolStripButtonBatchSign_Click(object sender, EventArgs e)
         {
+            this.dataGridViewOutline.EndEdit();
             string msg = string.Empty;
             try
             {
@@ -107,14 +108,94 @@ namespace HisPatch
                 {
                     return;
                 }
+                if (MessageBox.Show(string.Format("您确定要批签发【{0}】人的合格证吗？",a.Count()), "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                {
+                    return;
+                }
+
                 //lsExamPerson = (from _p in a select _a => FormPersonInforEdit.PID2ExamPerson(new Guid(_a))).ToList();
                lsExamPerson=a.Select(__a => FormPersonInforEdit.PID2ExamPerson(new Guid(__a))).ToList();
+                foreach (CExamPerson _item in lsExamPerson)
+                {
+                    if (Printer.SingCertifyPrint.QualifiedSign(_item))
+                    {
+                        msg += string.Format("√{0}签发成功\r\n", _item.Name);
+                    } 
+                    else
+                    {
+                        msg += string.Format("×××{0}签发失败！！！！\r\n", _item.Name);
+                    }
+                        
+                    
+                }
+                MessageBox.Show(msg);
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void toolStripButtonBatchPrint_Click(object sender, EventArgs e)
+        {
+            this.dataGridViewOutline.EndEdit();
+            string msg = string.Empty;
+            try
+            {
+                List<CExamPerson> lsExamPerson = new List<CExamPerson>();
+                List<CQueryRegInfo> lsQrinfo = (List<CQueryRegInfo>)this.dataGridViewOutline.DataSource;
+
+                var a = from _p in lsQrinfo where _p.sel && !string.IsNullOrEmpty(_p.signSerail) select _p.regID;
+                if (a.Count() <= 0)
+                {
+                    return;
+                }
+               
+
+                if (MessageBox.Show(string.Format("您确定要打印【{0}】人的合格证吗？", a.Count()), "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+                {
+                    return;
+                }
+
+                //lsExamPerson = (from _p in a select _a => FormPersonInforEdit.PID2ExamPerson(new Guid(_a))).ToList();
+                lsExamPerson = a.Select(__a => FormPersonInforEdit.PID2ExamPerson(new Guid(__a))).ToList();
+
+                Printer.SingCertifyPrint prnObj = new Printer.SingCertifyPrint(GSetting.PaperSizeA4Offset);
+                prnObj.DrawManyInA4(lsExamPerson, GSetting.PaperSizeA4PrinterName, true, false);
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridViewOutline_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            
+        }
+
+        private void toolStripButtonBatchBack_Click(object sender, EventArgs e)
+        {
+            string printCount="1";
+            if (Umaaz.User.InputBox.Show("提示","请输入打印张数","1",out printCount)!=DialogResult.OK)
+            {
+                return;
+            }
+            int _prnCount = 0;
+            if (!int.TryParse(printCount,out _prnCount))
+            {
+                return;
+            }
+            Printer.SingCertifyPrint printObj = new Printer.SingCertifyPrint(GSetting.PaperSizeA4Offset);
+            List<CExamPerson> lsEp = new List<CExamPerson>();
+            for (int i = 0; i < _prnCount;i++ )
+            {
+                lsEp.Add(new CExamPerson());
+            }
+            printObj.DrawManyInA4(lsEp, GSetting.PaperSizeA4PrinterName, true, true);
+
         }
 
        

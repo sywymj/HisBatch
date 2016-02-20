@@ -19,9 +19,9 @@ namespace HisPatch.Printer
         private SizeF cardSize = new SizeF(85.6f, 54);
         private Action<CExamPerson, PointF, Graphics> handleDraw;
         public PointF OffSetPoint { get; set; }
-        public SingCertifyPrint()
+        public SingCertifyPrint(PointF _pageOff)
         {
-            OffSetPoint = new PointF(0, 0);
+            OffSetPoint = _pageOff;
         }
 
         public static bool QualifiedSign(CExamPerson _CurPersonReg)
@@ -86,61 +86,69 @@ namespace HisPatch.Printer
 
         public void DrawManyInA4(IEnumerable<CExamPerson> pIEnumPersonInfo, string printerName, bool IsPreview,bool IsBack)
         {
-            if (pIEnumPersonInfo==null || (curPersonInfoArray=pIEnumPersonInfo.ToArray()).Length<=0)
+            try
             {
-                return;
-            }
-            if (IsBack)
-            {
-                handleDraw = DrawOneBack;
-            } 
-            else
-            {
-                handleDraw = DrawOneCard;
-            }
-
-
-            curDrawPos = 0;
-
-            PrintDocument pdA4 = new PrintDocument();
-            PaperSize pa4 = null;
-            foreach (PaperSize _p in pdA4.PrinterSettings.PaperSizes)
-            {
-                if (_p.PaperName.Equals("A4"))
+                if (pIEnumPersonInfo == null || (curPersonInfoArray = pIEnumPersonInfo.ToArray()).Length <= 0)
                 {
-                    pdA4.DefaultPageSettings.PaperSize = _p;
+                    return;
+                }
+                if (IsBack)
+                {
+                    handleDraw = DrawOneBack;
+                }
+                else
+                {
+                    handleDraw = DrawOneCard;
+                }
+
+
+                curDrawPos = 0;
+
+                PrintDocument pdA4 = new PrintDocument();
+                PaperSize pa4 = null;
+                foreach (PaperSize _p in pdA4.PrinterSettings.PaperSizes)
+                {
+                    if (_p.PaperName.Equals("A4"))
+                    {
+                        pdA4.DefaultPageSettings.PaperSize = _p;
+                    }
+                }
+
+                pdA4.DefaultPageSettings.Margins.Top = 0;
+                pdA4.DefaultPageSettings.Margins.Bottom = 0;
+                pdA4.DefaultPageSettings.Margins.Left = 0;
+                pdA4.DefaultPageSettings.Margins.Right = 0;
+
+                pdA4.DefaultPageSettings.Landscape = false;
+
+                if (!string.IsNullOrEmpty(printerName))
+                {
+                    pdA4.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
+                    //Console.WriteLine(pdA4.DefaultPageSettings.PrinterResolution.Kind.ToString());
+                    //foreach (PrinterResolution _pr in  pdA4.DefaultPageSettings.PrinterSettings.PrinterResolutions)
+                    //{
+                    //    Console.WriteLine(_pr.Kind.ToString());
+                    //}
+                }
+
+                pdA4.PrintPage += pdA4_PrintPage;
+                pdA4.BeginPrint += pdA4_BeginPrint;
+
+                if (IsPreview)
+                {
+                    PrintPreviewDialog pvDlg = new PrintPreviewDialog();
+                    pvDlg.Document = pdA4;
+                    pvDlg.ShowDialog();
+                }
+                else
+                {
+                    pdA4.Print();
                 }
             }
-
-            pdA4.DefaultPageSettings.Margins.Top = 0;
-            pdA4.DefaultPageSettings.Margins.Bottom = 0;
-            pdA4.DefaultPageSettings.Margins.Left = 0;
-            pdA4.DefaultPageSettings.Margins.Right = 0;
-
-            pdA4.DefaultPageSettings.Landscape = false;
-
-            if (!string.IsNullOrEmpty(printerName))
+            catch (System.Exception ex)
             {
-                pdA4.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
-                Console.WriteLine(pdA4.DefaultPageSettings.PrinterResolution.Kind.ToString());
-                foreach (PrinterResolution _pr in  pdA4.DefaultPageSettings.PrinterSettings.PrinterResolutions)
-                {
-                    Console.WriteLine(_pr.Kind.ToString());
-                }
-            }
-
-            pdA4.PrintPage += pdA4_PrintPage;
-            pdA4.BeginPrint += pdA4_BeginPrint;
-             
-            if (IsPreview)
-            {
-                PrintPreviewDialog pvDlg = new PrintPreviewDialog();
-                pvDlg.Document = pdA4;
-                pvDlg.ShowDialog();
-            }
-            else
-            {
-                pdA4.Print();
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -154,7 +162,7 @@ namespace HisPatch.Printer
         void pdA4_PrintPage(object sender, PrintPageEventArgs e)
         {
             //throw new NotImplementedException();
-            int curRow = 0; int curCol = 0; int countPerPage = 0;
+            int curRow = 0; int curCol = 0; int countPerPage = 1;
             while (curDrawPos < curPersonInfoArray.Length && countPerPage<9)
             {
                 
@@ -180,52 +188,62 @@ namespace HisPatch.Printer
 
         public void DrawSingeInPhotoPaper6In(CExamPerson pInfo,string printerName,bool IsPreview,bool IsBack)
         {
-            if (pInfo==null)
+            try
             {
-                return;
-            }
-            if (IsBack)
-            {
-                handleDraw = DrawOneBack;
-            }
-            else
-            {
-                handleDraw = DrawOneCard;
-            }
-            curPersonInfo = pInfo;
-            PrintDocument pd = new PrintDocument();
-            PaperSize ps6in = new PaperSize("ps6in",Convert.ToInt32( 1020 / 2.54), Convert.ToInt32(1520/ 2.54));
+                if (pInfo == null)
+                {
+                    return;
+                }
+                if (IsBack)
+                {
+                    handleDraw = DrawOneBack;
+                }
+                else
+                {
+                    handleDraw = DrawOneCard;
+                }
+                curPersonInfo = pInfo;
+                PrintDocument pd = new PrintDocument();
+                PaperSize ps6in = new PaperSize("ps6in", Convert.ToInt32(1020 / 2.54), Convert.ToInt32(1520 / 2.54));
 
-            pd.DefaultPageSettings.Margins.Top = 0;
-            pd.DefaultPageSettings.Margins.Bottom = 0;
-            pd.DefaultPageSettings.Margins.Left = 0;
-            pd.DefaultPageSettings.Margins.Right = 0;
-            pd.DefaultPageSettings.PaperSize = ps6in;
+                pd.DefaultPageSettings.Margins.Top = 0;
+                pd.DefaultPageSettings.Margins.Bottom = 0;
+                pd.DefaultPageSettings.Margins.Left = 0;
+                pd.DefaultPageSettings.Margins.Right = 0;
+                pd.DefaultPageSettings.PaperSize = ps6in;
 
-            //pd.DefaultPageSettings.Landscape = true;
-            //PrintDialog pdd = new PrintDialog();
-            //pdd.ShowDialog();
-            //PrinterResolution prr = new PrinterResolution();
-            //prr.Kind=PrinterResolutionKind.Low;
+                //pd.DefaultPageSettings.Landscape = true;
+                //PrintDialog pdd = new PrintDialog();
+                //pdd.ShowDialog();
+                //PrinterResolution prr = new PrinterResolution();
+                //prr.Kind=PrinterResolutionKind.Low;
 
-            if (!string.IsNullOrEmpty(printerName))
-            {
-                pd.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
-                //pd.DefaultPageSettings.PrinterResolution = prr;
-                
-               
+                if (!string.IsNullOrEmpty(printerName))
+                {
+                    pd.DefaultPageSettings.PrinterSettings.PrinterName = printerName;
+                    //pd.DefaultPageSettings.PrinterResolution = prr;
+
+
+                }
+                pd.PrintPage += pd_PrintPage;
+                if (IsPreview)
+                {
+                    PrintPreviewDialog pvDlg = new PrintPreviewDialog();
+                    pvDlg.Document = pd;
+                    pvDlg.ShowDialog();
+                }
+                else
+                {
+                    pd.Print();
+                }
             }
-            pd.PrintPage += pd_PrintPage;
-            if (IsPreview)
+            catch (System.Exception ex)
             {
-                PrintPreviewDialog pvDlg = new PrintPreviewDialog();
-                pvDlg.Document = pd;
-                pvDlg.ShowDialog();
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
-            else
-            {
-                pd.Print();
-            }
+
+            
 
 
         }
@@ -324,6 +342,7 @@ namespace HisPatch.Printer
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                
             }
         }
 

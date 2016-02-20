@@ -470,7 +470,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormPersonInforEdit";
-            this.Text = "湖北省从业人员预防性健康检查管理软件 V1.0 Program By Tianmimi";
+            this.Text = "湖北省从业人员预防性健康检查管理软件 V2.0 Program By Tianmimi";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPersonInforEdit_FormClosing);
             this.Load += new System.EventHandler(this.FormPersonInforEdit_Load);
             this.Resize += new System.EventHandler(this.FormPersonInforEdit_Resize);

@@ -18,7 +18,7 @@ namespace HisPatch
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            Printer.SingCertifyPrint obj = new Printer.SingCertifyPrint();
+            Printer.SingCertifyPrint obj = new Printer.SingCertifyPrint(new PointF(0,0));
             CExamPerson pinfo = new CExamPerson();
             pinfo.PSN = "420300197612210911";
             pinfo.SignNumber = "4222249282005000001";

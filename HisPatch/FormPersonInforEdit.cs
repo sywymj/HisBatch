@@ -101,6 +101,14 @@ namespace HisPatch
             RefreshCurReginfo();
             try
             {
+                GSetting.PaperSize6InPrinterName = Properties.Settings.Default.CarDPrinter;
+                GSetting.PaperSizeA4PrinterName = Properties.Settings.Default.CarDPrinter;
+                GSetting.PaperSize6InOffset.X = Properties.Settings.Default.P6InOffsetX;
+                GSetting.PaperSize6InOffset.Y = Properties.Settings.Default.P6InOffsetY;
+                GSetting.PaperSizeA4Offset.X = Properties.Settings.Default.PA4OffsetX;
+                GSetting.PaperSizeA4Offset.Y = Properties.Settings.Default.PA4OffsetY;
+
+
 
                 int iPort;
                 for (iPort = 1001; iPort <= 1016; iPort++)
@@ -188,7 +196,7 @@ namespace HisPatch
                             __CurPersonReg.SignDate = signInfo.SignDate ?? DateTime.Now;
                         }
                         //读取照片
-                        __CurPersonReg.Avatar = bytesToImage(_p.Avatar.ToArray());
+                        __CurPersonReg.Avatar =bytesToImage(_p.Avatar.ToArray());
 
                         
                     }
@@ -207,7 +215,7 @@ namespace HisPatch
                 return null;
             }
         }
-        private Image bytesToImage(byte[] buf)
+        private static Image bytesToImage(byte[] buf)
         {
             try
             {
@@ -602,7 +610,7 @@ namespace HisPatch
             {
                 RefreshCurReginfo();
 
-                Printer.SingCertifyPrint obj = new Printer.SingCertifyPrint();
+                Printer.SingCertifyPrint obj = new Printer.SingCertifyPrint(GSetting.PaperSize6InOffset);
                 obj.DrawSingeInPhotoPaper6In(CurPersonReg, GSetting.PaperSize6InPrinterName, true, false);
             }
             else
@@ -640,12 +648,15 @@ namespace HisPatch
 
         private void toolStripMenuItemPraining_Click(object sender, EventArgs e)
         {
-            FormBatchPutDrugReportView rv = new FormBatchPutDrugReportView();
-            Document doc = new Document(new MemoryStream(Properties.Resources.Training));
+            //FormBatchPutDrugReportView rv = new FormBatchPutDrugReportView();
+            //Document doc = new Document(new MemoryStream(Properties.Resources.Training));
 
-            rv.DispDoc = doc;
-            rv.WindowState = FormWindowState.Normal;
-            rv.ShowDialog();
+            //rv.DispDoc = doc;
+            //rv.WindowState = FormWindowState.Normal;
+            //rv.ShowDialog();
+            Printer.SingCertifyPrint prnObj = new Printer.SingCertifyPrint(GSetting.PaperSize6InOffset);
+            prnObj.DrawSingeInPhotoPaper6In(new CExamPerson(), GSetting.PaperSize6InPrinterName, true, true);
+
         }
 
         private void toolStripButtonReadPsnCard_Click(object sender, EventArgs e)

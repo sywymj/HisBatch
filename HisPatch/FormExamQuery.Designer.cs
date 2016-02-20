@@ -38,13 +38,13 @@
             this.toolStripTextBoxQueryName = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonQuery = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelSelCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dataGridViewOutline = new System.Windows.Forms.DataGridView();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonBatchSign = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBatchPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBatchBack = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelSelCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dataGridViewOutline = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOutline)).BeginInit();
@@ -123,6 +123,38 @@
             this.toolStripButtonQuery.Text = "查询";
             this.toolStripButtonQuery.Click += new System.EventHandler(this.toolStripButtonQuery_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonBatchSign
+            // 
+            this.toolStripButtonBatchSign.Image = global::HisPatch.Properties.Resources.CF_Red___Config;
+            this.toolStripButtonBatchSign.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBatchSign.Name = "toolStripButtonBatchSign";
+            this.toolStripButtonBatchSign.Size = new System.Drawing.Size(64, 22);
+            this.toolStripButtonBatchSign.Text = "批签发";
+            this.toolStripButtonBatchSign.Click += new System.EventHandler(this.toolStripButtonBatchSign_Click);
+            // 
+            // toolStripButtonBatchPrint
+            // 
+            this.toolStripButtonBatchPrint.Image = global::HisPatch.Properties.Resources.CF_Red___Fonts;
+            this.toolStripButtonBatchPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBatchPrint.Name = "toolStripButtonBatchPrint";
+            this.toolStripButtonBatchPrint.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButtonBatchPrint.Text = "批打印正";
+            this.toolStripButtonBatchPrint.Click += new System.EventHandler(this.toolStripButtonBatchPrint_Click);
+            // 
+            // toolStripButtonBatchBack
+            // 
+            this.toolStripButtonBatchBack.Image = global::HisPatch.Properties.Resources.CF_Red___Favorites;
+            this.toolStripButtonBatchBack.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBatchBack.Name = "toolStripButtonBatchBack";
+            this.toolStripButtonBatchBack.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButtonBatchBack.Text = "批打印反";
+            this.toolStripButtonBatchBack.Click += new System.EventHandler(this.toolStripButtonBatchBack_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -160,36 +192,7 @@
             this.dataGridViewOutline.TabIndex = 3;
             this.dataGridViewOutline.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOutline_CellDoubleClick);
             this.dataGridViewOutline.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOutline_CellMouseUp);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButtonBatchSign
-            // 
-            this.toolStripButtonBatchSign.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBatchSign.Image")));
-            this.toolStripButtonBatchSign.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBatchSign.Name = "toolStripButtonBatchSign";
-            this.toolStripButtonBatchSign.Size = new System.Drawing.Size(64, 22);
-            this.toolStripButtonBatchSign.Text = "批签发";
-            this.toolStripButtonBatchSign.Click += new System.EventHandler(this.toolStripButtonBatchSign_Click);
-            // 
-            // toolStripButtonBatchPrint
-            // 
-            this.toolStripButtonBatchPrint.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBatchPrint.Image")));
-            this.toolStripButtonBatchPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBatchPrint.Name = "toolStripButtonBatchPrint";
-            this.toolStripButtonBatchPrint.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButtonBatchPrint.Text = "批打印正";
-            // 
-            // toolStripButtonBatchBack
-            // 
-            this.toolStripButtonBatchBack.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBatchBack.Image")));
-            this.toolStripButtonBatchBack.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBatchBack.Name = "toolStripButtonBatchBack";
-            this.toolStripButtonBatchBack.Size = new System.Drawing.Size(76, 22);
-            this.toolStripButtonBatchBack.Text = "批打印反";
+            this.dataGridViewOutline.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridViewOutline_CellPainting);
             // 
             // FormExamQuery
             // 
@@ -203,7 +206,7 @@
             this.Name = "FormExamQuery";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormExamQuery";
+            this.Text = "查询&工具";
             this.Load += new System.EventHandler(this.FormExamQuery_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

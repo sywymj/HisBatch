@@ -85,7 +85,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>HisPatch.Program</StartupObject>
@@ -192,6 +192,7 @@
       <DependentUpon>FormPictureTest.cs</DependentUpon>
     </Compile>
     <Compile Include="GSetting.cs" />
+    <Compile Include="InputBox.cs" />
     <Compile Include="Printer\SingCertifyPrint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

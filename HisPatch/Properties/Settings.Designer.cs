@@ -41,5 +41,41 @@ namespace HisPatch.Properties {
                 return ((string)(this["CarDPrinter"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float P6InOffsetX {
+            get {
+                return ((float)(this["P6InOffsetX"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float P6InOffsetY {
+            get {
+                return ((float)(this["P6InOffsetY"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float PA4OffsetX {
+            get {
+                return ((float)(this["PA4OffsetX"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float PA4OffsetY {
+            get {
+                return ((float)(this["PA4OffsetY"]));
+            }
+        }
     }
 }
