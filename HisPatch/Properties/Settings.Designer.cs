@@ -35,15 +35,6 @@ namespace HisPatch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("EPSON L310 Series")]
-        public string CarDPrinter {
-            get {
-                return ((string)(this["CarDPrinter"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public float P6InOffsetX {
             get {
@@ -63,6 +54,24 @@ namespace HisPatch.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float PA4OffsetY {
+            get {
+                return ((float)(this["PA4OffsetY"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CarDPrinter {
+            get {
+                return ((string)(this["CarDPrinter"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public float PA4OffsetX {
             get {
                 return ((float)(this["PA4OffsetX"]));
@@ -71,10 +80,11 @@ namespace HisPatch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public float PA4OffsetY {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=TjData;User ID=sa")]
+        public string TjDataConnectionString {
             get {
-                return ((float)(this["PA4OffsetY"]));
+                return ((string)(this["TjDataConnectionString"]));
             }
         }
     }

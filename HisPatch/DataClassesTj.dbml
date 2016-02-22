@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TjData" Class="DataClassesTjDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=TjData;User ID=sa" SettingsObjectName="HisPatch.Properties.Settings" SettingsPropertyName="TjDataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="futian_user.HYDWDMB" Member="HYDWDMB">
+    <Type Name="HYDWDMB">
+      <Column Name="BH" Type="System.String" DbType="VarChar(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MC" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="DWFZR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="LXDH" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="CZDH" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="LXDZ" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="YZBM" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="QYXZ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="YWYY" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="YHZH" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="JZRS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LJZFJE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LJZCJE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BZ" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="ZHXGR" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="ZHXGRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LB" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="BZRS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PYJM" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="WBJM" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="QYBZ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WJBZ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="HYDWDMB_TJ_TJDJB" Member="TJ_TJDJB" ThisKey="BH" OtherKey="DWBH" Type="TJ_TJDJB" />
+    </Type>
+  </Table>
+  <Table Name="futian_user.GZRY" Member="GZRY">
+    <Type Name="GZRY">
+      <Column Name="GKHM" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DYSRM" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="DESRM" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="GKMM" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="PYJM" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="WBJM" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="QTSRF" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="XM" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="CSRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SFZHM" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="CX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="QX" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="ZW" Type="System.String" DbType="Char(14)" CanBeNull="true" />
+      <Column Name="ZC" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="GZKS" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="GZBQ" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="GZDZ" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="BGSDH" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="ZZ" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ZZDH" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="CHHM" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="SRF" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="BZ" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="ZHXGRQ" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ZHXGR" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Column Name="XB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ZJYS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="QYBZ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="GZRY_TJ_TJDJB" Member="TJ_TJDJB" ThisKey="GKHM" OtherKey="JCYS" Type="TJ_TJDJB" />
+    </Type>
+  </Table>
+  <Table Name="futian_user.TJ_TJDJB" Member="TJ_TJDJB">
+    <Type Name="TJ_TJDJB">
+      <Column Name="TJBH" Type="System.String" DbType="VarChar(14) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TJCS" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="XM" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="XB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DWBH" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="TJRQ" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DJRQ" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DJRY" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="ZS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="JY" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="JCRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JCYS" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="GDRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GDYS" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="SFZH" Type="System.String" DbType="VarChar(18)" CanBeNull="true" />
+      <Column Name="ZC" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="ZW" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="TJLB" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="RYLB" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="HYZK" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FZFS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FZBH" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="JSFS" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="YYBH" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="SUMOVER" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="DEPART" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="DJLSH" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="RYBH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="PHONE" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="BMBH" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="SJCXXH" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="FCRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FCTS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FCGY" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="CSRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TJBZ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AGE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FZRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FZDW" Type="System.String" DbType="Char(40)" CanBeNull="true" />
+      <Column Name="PICTURE" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BZR" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="CSNYR" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GZRQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JCSJ" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="BM" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="GZ" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="YHYS" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
+      <Column Name="WHCD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ZDYJ" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SFTZ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TZQK" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TZR" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="YF" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DYCS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MOBILE" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SV_CALLBACK" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SV_SMS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SV_EMAIL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SV_WEB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="HYDWDMB_TJ_TJDJB" Member="HYDWDMB" ThisKey="DWBH" OtherKey="BH" Type="HYDWDMB" IsForeignKey="true" />
+      <Association Name="GZRY_TJ_TJDJB" Member="GZRY" ThisKey="JCYS" OtherKey="GKHM" Type="GZRY" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

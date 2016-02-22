@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.375" name="DataClassesTj">
+  <DataContextMoniker Name="/DataClassesTjDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7c72d377-7daa-4c74-b9f0-b66855b9c43a" absoluteBounds="0.625, 3.25, 2, 5.0099003092447907">
+      <DataClassMoniker Name="/DataClassesTjDataContext/HYDWDMB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d05719a0-f3e7-4fe6-8306-86aab0c2aead" absoluteBounds="0.63999999999999968, 3.71, 1.9700000000000002, 4.4499003092447911" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3255b094-3a86-48da-a147-cc9b49f7bcc1" absoluteBounds="3, 0.5, 2, 6.3470381673177076">
+      <DataClassMoniker Name="/DataClassesTjDataContext/GZRY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="593e99e4-96ab-48ad-8c8b-a79adcbc5b41" absoluteBounds="3.0149999999999997, 0.96, 1.9700000000000002, 5.787038167317708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="515860d6-dc1b-40b0-956c-edd543ec8a88" absoluteBounds="5.875, 0.5, 2, 12.650688069661458">
+      <DataClassMoniker Name="/DataClassesTjDataContext/TJ_TJDJB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5969d9a8-af06-4d85-9442-9af53ad34719" absoluteBounds="5.89, 0.96, 1.9700000000000002, 12.090688069661457" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 7.58471923828125); (5.875 : 7.58471923828125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesTjDataContext/HYDWDMB/HYDWDMB_TJ_TJDJB" />
+      <nodes>
+        <classShapeMoniker Id="7c72d377-7daa-4c74-b9f0-b66855b9c43a" />
+        <classShapeMoniker Id="515860d6-dc1b-40b0-956c-edd543ec8a88" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5 : 3.67351908365885); (5.875 : 3.67351908365885)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesTjDataContext/GZRY/GZRY_TJ_TJDJB" />
+      <nodes>
+        <classShapeMoniker Id="3255b094-3a86-48da-a147-cc9b49f7bcc1" />
+        <classShapeMoniker Id="515860d6-dc1b-40b0-956c-edd543ec8a88" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -746,6 +746,12 @@ namespace HisPatch
             }
         }
 
+        private void 总检查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTjQuery frmTjquery = new FrmTjQuery();
+            frmTjquery.ShowDialog();
+        }
+
     }
 
     enum EnMousePos

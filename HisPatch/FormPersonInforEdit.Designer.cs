@@ -73,6 +73,8 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.健康体检ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.总检查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -256,7 +258,8 @@
             this.文件FToolStripMenuItem,
             this.编辑EToolStripMenuItem,
             this.工具TToolStripMenuItem,
-            this.帮助HToolStripMenuItem});
+            this.帮助HToolStripMenuItem,
+            this.健康体检ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(745, 25);
@@ -458,6 +461,21 @@
             this.关于AToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.关于AToolStripMenuItem.Text = "关于(&A)...";
             // 
+            // 健康体检ToolStripMenuItem
+            // 
+            this.健康体检ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.总检查询ToolStripMenuItem});
+            this.健康体检ToolStripMenuItem.Name = "健康体检ToolStripMenuItem";
+            this.健康体检ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.健康体检ToolStripMenuItem.Text = "健康体检";
+            // 
+            // 总检查询ToolStripMenuItem
+            // 
+            this.总检查询ToolStripMenuItem.Name = "总检查询ToolStripMenuItem";
+            this.总检查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.总检查询ToolStripMenuItem.Text = "总检查询";
+            this.总检查询ToolStripMenuItem.Click += new System.EventHandler(this.总检查询ToolStripMenuItem_Click);
+            // 
             // FormPersonInforEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -532,5 +550,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPraining;
         private System.Windows.Forms.ToolStripStatusLabel LabelPsnStatus;
         private System.Windows.Forms.ToolStripButton toolStripButtonReadPsnCard;
+        private System.Windows.Forms.ToolStripMenuItem 健康体检ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 总检查询ToolStripMenuItem;
     }
 }

@@ -135,6 +135,11 @@
     <Compile Include="CExamPerson.cs" />
     <Compile Include="CTjReport.cs" />
     <Compile Include="CVRSDK.cs" />
+    <Compile Include="DataClassesTj.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesTj.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataClassExam.cs">
       <DependentUpon>DataClassExam.dbml</DependentUpon>
     </Compile>
@@ -191,6 +196,12 @@
     <Compile Include="FormPictureTest.Designer.cs">
       <DependentUpon>FormPictureTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTjQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTjQuery.Designer.cs">
+      <DependentUpon>FrmTjQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="GSetting.cs" />
     <Compile Include="InputBox.cs" />
     <Compile Include="Printer\SingCertifyPrint.cs" />
@@ -200,8 +211,16 @@
     <EmbeddedResource Include="BatchProvideDrugForm.resx">
       <DependentUpon>BatchProvideDrugForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataClassesTj.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesTj.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataClassExam.dbml.layout">
       <DependentUpon>DataClassExam.dbml</DependentUpon>
+    </None>
+    <None Include="DataClassesTj.dbml.layout">
+      <DependentUpon>DataClassesTj.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="FormBatchPutDrugReportView.resx">
       <DependentUpon>FormBatchPutDrugReportView.cs</DependentUpon>
@@ -226,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPictureTest.resx">
       <DependentUpon>FormPictureTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTjQuery.resx">
+      <DependentUpon>FrmTjQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
