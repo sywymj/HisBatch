@@ -44,6 +44,7 @@ namespace HisPatch
         {
             try
             {
+                
                 CVRSDK.CVR_CloseComm();
             }
             catch (System.Exception ex)

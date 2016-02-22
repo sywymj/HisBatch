@@ -87,5 +87,14 @@ namespace HisPatch.Properties {
                 return ((string)(this["TjDataConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("十堰市茅箭区人民医院体检中心祝您健康！！！ \\r\\n健康热线：0719-8791481")]
+        public string ReportZjFootMsg {
+            get {
+                return ((string)(this["ReportZjFootMsg"]));
+            }
+        }
     }
 }

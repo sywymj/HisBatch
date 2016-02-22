@@ -97,6 +97,8 @@
     <Reference Include="DataUtil">
       <HintPath>.\DataUtil.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Spire.Doc, Version=5.3.36.59035, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Spire.Doc.dll</HintPath>
@@ -117,6 +119,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -211,6 +214,9 @@
     <EmbeddedResource Include="BatchProvideDrugForm.resx">
       <DependentUpon>BatchProvideDrugForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportTjZjjl.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="DataClassesTj.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClassesTj.designer.cs</LastGenOutput>
@@ -269,6 +275,7 @@
     <None Include="health" />
     <None Include="HisPatch_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\UIObjTjData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
