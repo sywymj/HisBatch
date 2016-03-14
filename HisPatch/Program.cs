@@ -16,18 +16,18 @@ namespace HisPatch
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+            //FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
             //FormPictureTest formPersonEdit = new FormPictureTest();
-            Application.Run(formPersonEdit);
+            //Application.Run(formPersonEdit);
 
 
 
-            //FormLogin formLogin = new FormLogin();
-            //if (formLogin.ShowDialog() == DialogResult.OK)
-            //{
-            //    FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
-            //    Application.Run(formPersonEdit);
-            //}
+            FormLogin formLogin = new FormLogin();
+            if (formLogin.ShowDialog() == DialogResult.OK)
+            {
+                FormPersonInforEdit formPersonEdit = new FormPersonInforEdit();
+                Application.Run(formPersonEdit);
+            }
 
         }
     }

@@ -34,7 +34,8 @@
       <Value Profile="(Default)">Data Source=.;Initial Catalog=TjData;User ID=sa</Value>
     </Setting>
     <Setting Name="ReportZjFootMsg" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">十堰市茅箭区人民医院体检中心祝您健康！！！ \r\n健康热线：0719-8791481</Value>
+      <Value Profile="(Default)">十堰市茅箭区人民医院体检中心祝您健康！！！
+健康热线：0719-8791481</Value>
     </Setting>
   </Settings>
 </SettingsFile>

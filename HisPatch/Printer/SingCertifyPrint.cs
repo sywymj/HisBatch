@@ -51,7 +51,7 @@ namespace HisPatch.Printer
                         qualifiedSign.SignOperID = GSetting.OperatorID;
                         qualifiedSign.SignOperName = GSetting.OperatorName;
                         qualifiedSign.IsFail = 0;
-                        qualifiedSign.SignNumber = string.Format(@"422224928{1}{0:D6}", serial, qualifiedSign.Year);
+                        qualifiedSign.SignNumber = string.Format(@"{1}08{0:D5}", serial, qualifiedSign.Year);
                         qualifiedSign.ExpireDate = serverDate.AddYears(1).AddDays(-1);
 
                         pRegInfo.T1 = "T";
@@ -360,9 +360,9 @@ namespace HisPatch.Printer
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 
                 float lineHeight = 7f;
-                PointF posAvatar=new PointF(3,16);
-                PointF posContent=new PointF(28,17);
-                PointF posSign = new PointF(50, 22);
+                PointF posAvatar=new PointF(58,16);
+                PointF posContent=new PointF(3,17);
+                PointF posSign = new PointF(23, 22);
 
                 Pen _penDash = new Pen(Color.Gray,0.02f);
                 _penDash.DashStyle = DashStyle.DashDot;
@@ -401,7 +401,7 @@ namespace HisPatch.Printer
 
                 posContent.Y += lineHeight;
                 g.DrawString("年龄：" + pInfo.Age, _fontTitle2, _brushBlack, posContent.X, posContent.Y);
-                g.DrawString("从业范围：" + pInfo.WorkType, _fontTitle, _brushBlack, new RectangleF(posContent.X + 14, posContent.Y,42,lineHeight),_sf1);
+                g.DrawString("工种：" + pInfo.WorkType, _fontTitle, _brushBlack, new RectangleF(posContent.X + 16, posContent.Y,42,lineHeight),_sf1);
 
                 posContent.Y += lineHeight;
                 g.DrawString("体检日期：" + pInfo.SignDate.ToString("yyyy年MM月dd日"), _fontTitle2, _brushBlack, posContent.X, posContent.Y);
